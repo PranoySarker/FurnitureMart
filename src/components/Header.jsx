@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-16 py-02">
+    <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-16 py-02 z-50">
       <Link to="/">
         <img src="./images/Logo.png" alt="" className="w-32 h-10" />
       </Link>

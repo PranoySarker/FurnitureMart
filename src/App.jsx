@@ -7,6 +7,7 @@ import Login from "./page/Login";
 import SignUp from "./page/SignUp";
 import { AuthProvider } from "./context/authContext";
 import { ProductProvider } from "./context/ProductContext";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
+        <Footer />
       </ProductProvider>
     </AuthProvider>
   );
