@@ -1,7 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../context/authContext";
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-16 py-02">
       <Link to="/">
@@ -28,7 +37,7 @@ const Header = () => {
         </ul>
       </nav>
 
-      <div className="w-3/12 flex gap-3 justify-end">
+      <div className="w-3/12 flex gap-3 justify-end items-center">
         <button className="relative flex">
           <img
             src="./images/shopping-bag.png"
@@ -39,19 +48,34 @@ const Header = () => {
             5
           </span>
         </button>
-        <button>
-          <img
-            src="./images/man.jpg"
-            alt=""
-            className=" w-10 h-10 rounded-full"
-          />
-        </button>
-        <Link
-          to="/login"
-          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        >
-          Login
-        </Link>
+        {user.email && (
+          <div className="border border-gray-200 rounded flex gap-1 items-center p-1">
+            <span className="">{user.fname}</span>
+            <button>
+              <img
+                src="./images/man.jpg"
+                alt=""
+                className=" w-10 h-10 rounded-full"
+              />
+            </button>
+          </div>
+        )}
+
+        {!user.email ? (
+          <Link
+            to="/login"
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          >
+            Login
+          </Link>
+        ) : (
+          <button
+            onClick={handleLogout}
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          >
+            Logout
+          </button>
+        )}
       </div>
     </header>
   );

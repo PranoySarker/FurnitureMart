@@ -1,7 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../context/authContext";
 
 const SignUp = () => {
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { userSignUp } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const process = userSignUp(fname, lname, email, password);
+
+    if (process.success) {
+      alert(process.message);
+      navigate("/login");
+    } else {
+      alert(process.message);
+    }
+  };
+
   return (
     <div className="py-16">
       <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
@@ -14,50 +36,67 @@ const SignUp = () => {
             <p>Signup for purchase your desire product</p>
           </div>
 
-          <div className="mt-4 flex gap-3">
-            <div className="">
+          <form onSubmit={handleSignUp}>
+            <div className="mt-4 flex gap-3">
+              <div className="">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  First Name
+                </label>
+                <input
+                  className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                  type="text"
+                  value={fname}
+                  onChange={(e) => setFname(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Last Name
+                </label>
+                <input
+                  className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                  type="text"
+                  value={lname}
+                  onChange={(e) => setLname(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <div className="mt-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
-                First Name
+                Email Address
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                type="email"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
-            <div>
+            <div className="mt-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
-                Last Name
+                Password
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                type="email"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
-          </div>
-          <div className="mt-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Email Address
-            </label>
-            <input
-              className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-              type="email"
-            />
-          </div>
-          <div className="mt-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Password
-            </label>
-            <input
-              className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-              type="password"
-            />
-          </div>
 
-          <div className="mt-8">
-            <button className="bg-black text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-800">
-              Sign Up
-            </button>
-          </div>
+            <div className="mt-8">
+              <button
+                className="bg-black text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-800"
+                type="submit"
+              >
+                Sign Up
+              </button>
+            </div>
+          </form>
 
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 lg:w-1/4"></span>
