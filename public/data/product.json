@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Reclainer chair wood",
+    "price": 999.99,
+    "details": "A high-performance Chair with 16GB RAM and 512GB SSD.",
+    "image": "./images/image_125-removebg-preview 1.png"
+  },
+  {
+    "id": 2,
+    "name": "Timber ride padded",
+    "price": 699.99,
+    "details": "A latest model Chair with a 6.5-inch display and 128GB storage.",
+    "image": "./images/Image.png"
+  },
+  {
+    "id": 3,
+    "name": "Colored wooden chair",
+    "price": 199.99,
+    "details": "Noise-cancelling over-ear Chair with 20 hours of battery life.",
+    "image": "./images/Image (1).png"
+  },
+  {
+    "id": 4,
+    "name": "Blank baboo wicker",
+    "price": 249.99,
+    "details": "A wicker with fitness tracking and heart rate monitoring.",
+    "image": "./images/Image (2).png"
+  },
+  {
+    "id": 5,
+    "name": "Isolated wooden rock",
+    "price": 329.99,
+    "details": "A 10-inch wicker with 64GB storage and a high-resolution display.",
+    "image": "./images/Image (3).png"
+  },
+  {
+    "id": 6,
+    "name": "Minimal empty rocking",
+    "price": 549.99,
+    "details": "A digital rocking chair with 24MP resolution and 4K video recording.",
+    "image": "./images/Image (4).jpg"
+  },
+  {
+    "id": 7,
+    "name": "Chair Bluetooth Speaker",
+    "price": 99.99,
+    "details": "A Chair that privide Bluetooth speaker with 10 hours of playtime.",
+    "image": "./images/image-p.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Gaming Console Chair",
+    "price": 399.99,
+    "details": "A next-gen gaming console chair with 1TB storage and 4K gaming support.",
+    "image": "./images/pe-image.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Wite Furnished Table",
+    "price": 1299.99,
+    "details": "A 27-inch 4K monitor with HDR support and a 144Hz refresh rate.",
+    "image": "./images/p-image.jpg"
+  }
+]
