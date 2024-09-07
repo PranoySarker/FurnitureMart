@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/authContext";
+import CartContext from "../context/CartContext";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
+  const { cartItems } = useContext(CartContext);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -38,16 +41,18 @@ const Header = () => {
       </nav>
 
       <div className="w-3/12 flex gap-3 justify-end items-center">
-        <button className="relative flex">
-          <img
-            src="./images/shopping-bag.png"
-            alt=""
-            className="flex-1 w-8 h-8"
-          />
-          <span className="absolute right-0 top-0 rounded-full bg-gray-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
-            5
-          </span>
-        </button>
+        <Link to="/cart">
+          <button className="relative flex">
+            <img
+              src="./images/shopping-bag.png"
+              alt=""
+              className="flex-1 w-8 h-8"
+            />
+            <span className="absolute left-4 top-0 rounded-full bg-gray-600 w-6 h-6 top right p-1 m-0 text-white font-mono text-sm  leading-tight text-center">
+              {cartItems?.length}
+            </span>
+          </button>
+        </Link>
         {user.email && (
           <div className="border border-gray-200 rounded flex gap-1 items-center p-1">
             <span className="">{user.fname}</span>

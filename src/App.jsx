@@ -5,21 +5,26 @@ import Header from "./components/Header";
 import Home from "./page/Home";
 import Login from "./page/Login";
 import SignUp from "./page/SignUp";
+import CartPage from "./page/CartPage";
+import Footer from "./components/Footer";
 import { AuthProvider } from "./context/authContext";
 import { ProductProvider } from "./context/ProductContext";
-import Footer from "./components/Footer";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     <AuthProvider>
       <ProductProvider>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/cart" element={<CartPage />} />
+          </Routes>
+          <Footer />
+        </CartProvider>
       </ProductProvider>
     </AuthProvider>
   );
