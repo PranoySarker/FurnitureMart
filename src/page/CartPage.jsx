@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import CartContext from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { cartItems, addToCart, removeFromCart, getCartTotal, clearCart } =
@@ -184,12 +185,14 @@ const CartPage = () => {
                     ${cartTotal}
                   </p>
                 </div>
-                <button
-                  type="button"
-                  className="w-full text-center bg-black rounded-sm py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-gray-700"
-                >
-                  Checkout
-                </button>
+                <Link to="/checkout">
+                  <button
+                    type="button"
+                    className="w-full text-center bg-black rounded-sm py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-gray-700"
+                  >
+                    Checkout
+                  </button>
+                </Link>
               </form>
             </div>
           </div>
