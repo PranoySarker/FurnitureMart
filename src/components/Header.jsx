@@ -49,7 +49,7 @@ const Header = () => {
               className="flex-1 w-8 h-8"
             />
             <span className="absolute left-4 top-0 rounded-full bg-gray-600 w-6 h-6 top right p-1 m-0 text-white font-mono text-sm  leading-tight text-center">
-              {cartItems?.length}
+              {user.length === 0 ? 0 : cartItems?.length}
             </span>
           </button>
         </Link>
